@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
-
 EXPOSE 3000
 
-CMD [ "yarn", "run", "start:dev" ]
+CMD [ "yarn", "start:dev" ]
