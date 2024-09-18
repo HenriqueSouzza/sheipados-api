@@ -25,13 +25,13 @@ export class UserController {
     return this.userService.create(user);
   }
 
-  @Put(':id')
-  update(@Param('id') id: number, @Body() user: UpdateUserDto): Promise<void> {
-    return this.userService.update(id, user);
+  @Put(':username')
+  update(@Param('username') username: string, @Body() user: UpdateUserDto): Promise<UserDto> {
+    return this.userService.update(username, user);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: number): Promise<void> {
-    return this.userService.remove(id);
+  @Delete(':username')
+  remove(@Param('username') username: string): Promise<void> {
+    return this.userService.remove(username);
   }
 }

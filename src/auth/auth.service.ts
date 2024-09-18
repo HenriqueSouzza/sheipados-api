@@ -37,4 +37,12 @@ export class AuthService {
       }),
     };
   }
+
+  async profile(username: string) {
+    const user = await this.userService.findUser(username);
+    delete user.password;
+    delete user.id;
+
+    return user;
+  }
 }
