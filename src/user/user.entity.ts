@@ -18,8 +18,11 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ default: true })
   firstLogin: boolean;
+
+  @Column({ default: true })
+  isActive: boolean;
 
   @CreateDateColumn()
   createAt: Date;
