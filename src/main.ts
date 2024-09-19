@@ -9,7 +9,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'https://localhost',
+      'https://sheipados-dev.com',
+      'https://productive-annabel-henriquedev-22d31d9f.koyeb.app/',
     ],
     methods: ["GET", "POST", "PUT"]
   })
