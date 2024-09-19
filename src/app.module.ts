@@ -17,8 +17,6 @@ import { ConfigModule } from '@nestjs/config';
       database: process.env.DATABASE_NAME,
       logging: false,
       entities: [join(__dirname, '**', '**', '**', '*.entity.{ts,js}')],
-      migrationsTableName: 'migrations_table',
-      migrations: ['src/db/migrations/*{.ts}'],
       synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
     }),
     AuthModule,

@@ -10,7 +10,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://sheipados-dev.com',
-      'https://sheipados-nutrition-system.vercel.app/',
+      'https://sheipados-nutrition-system.vercel.app',
     ],
     methods: ["GET", "POST", "PUT"]
   })
