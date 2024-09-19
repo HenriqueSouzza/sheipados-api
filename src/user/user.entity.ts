@@ -18,10 +18,10 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: true })
   firstLogin: boolean;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: true })
   isActive: boolean;
 
   @CreateDateColumn()
