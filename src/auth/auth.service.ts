@@ -34,7 +34,7 @@ export class AuthService {
       access_token: this.jwtService.sign({
         name: user.name,
         username: user.username
-      }),
+      }, { secret: process.env.JWT_SECRET }),
     };
   }
 
