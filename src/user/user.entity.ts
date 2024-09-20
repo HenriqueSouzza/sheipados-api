@@ -34,5 +34,6 @@ export class User {
   @BeforeUpdate()
   async hashPassword() {
     this.password = createHmac('sha256', this.password).digest('hex');
+    this.firstLogin = this.password === createHmac('sha256', process.env.PASSWORD_DEFAULT).digest('hex');
   }
 }

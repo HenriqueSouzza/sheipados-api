@@ -11,7 +11,6 @@ export class AddUser1726758633412 implements MigrationInterface {
                 password: process.env.PASSWORD_DEFAULT,
                 username: 'henriquetsi',
                 isActive: true,
-                firstLogin: true,
             }),
         )
     }
