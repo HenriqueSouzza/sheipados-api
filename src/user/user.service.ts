@@ -34,24 +34,34 @@ export class UserService {
         username: true,
         email: true,
         firstLogin: true,
+        isActive: true,
       }
     });
   }
 
-  create(body: CreateUserDto): Promise<UserDto> {
-    const user = this.userRepository.create({ ...body, firstLogin: true });
-    return this.userRepository.save(user);
+  async create(body: CreateUserDto): Promise<UserDto> {
+    const user = this.userRepository.create({ ...body });
+    const {
+      name,
+      username,
+      email,
+      firstLogin,
+      isActive
+    } = await this.userRepository.save(user);
+
+    return {
+      name,
+      username,
+      email,
+      firstLogin,
+      isActive,
+    }
   }
 
-  async update(username: string, user: Partial<User>): Promise<UserDto> {
-    const property = await this.userRepository.findOne({
-      where: { username }
-    });
-
-    return await this.userRepository.save({
-      ...property,
-      ...user
-    });
+  async update(username: string, body: Partial<User>): Promise<UserDto> {
+    const user = this.userRepository.create(body);
+    await this.userRepository.update({ username }, user);
+    return this.findOne(username);
   }
 
   async remove(username: string): Promise<void> {

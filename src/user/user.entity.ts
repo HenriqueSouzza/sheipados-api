@@ -18,10 +18,10 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ type: 'boolean', default: true })
+  @Column()
   firstLogin: boolean;
 
-  @Column({ type: 'boolean', default: true })
+  @Column()
   isActive: boolean;
 
   @CreateDateColumn()
@@ -30,10 +30,20 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @BeforeInsert()
   @BeforeUpdate()
-  async hashPassword() {
+  @BeforeInsert()
+  hashPassword() {
     this.password = createHmac('sha256', this.password).digest('hex');
+  }
+
+  @BeforeUpdate()
+  @BeforeInsert()
+  setFirstLogin() {
     this.firstLogin = this.password === createHmac('sha256', process.env.PASSWORD_DEFAULT).digest('hex');
+  }
+
+  @BeforeInsert()
+  beforeUpdate() {
+    this.isActive = true;
   }
 }
