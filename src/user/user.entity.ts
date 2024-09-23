@@ -33,13 +33,17 @@ export class User {
   @BeforeUpdate()
   @BeforeInsert()
   hashPassword() {
-    this.password = createHmac('sha256', this.password).digest('hex');
+    if (this.password) {
+      this.password = createHmac('sha256', this.password).digest('hex');
+    }
   }
 
   @BeforeUpdate()
   @BeforeInsert()
   setFirstLogin() {
-    this.firstLogin = this.password === createHmac('sha256', process.env.PASSWORD_DEFAULT).digest('hex');
+    if (this.password) {
+      this.firstLogin = this.password === createHmac('sha256', process.env.PASSWORD_DEFAULT).digest('hex');
+    }
   }
 
   @BeforeInsert()
