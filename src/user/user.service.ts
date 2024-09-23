@@ -18,6 +18,7 @@ export class UserService {
         username: true,
         email: true,
         firstLogin: true,
+        isActive: true,
       }
     });
   }
