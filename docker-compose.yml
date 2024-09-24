@@ -16,16 +16,16 @@ services:
     networks:
       - mysql-phpmyadmin
 
-  app:
-    container_name: sheipados-api
-    build: .
-    ports:
-      - '3000:3000'
-    depends_on:
-      - db
-    env_file: .env
-    networks:
-      - mysql-phpmyadmin
+  # app:
+  #   container_name: sheipados-api
+  #   build: .
+  #   ports:
+  #     - '3000:3000'
+  #   depends_on:
+  #     - db
+  #   env_file: .env
+  #   networks:
+  #     - mysql-phpmyadmin
 
   phpmyadmin:
     container_name: phpmy-admin

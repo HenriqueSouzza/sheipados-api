@@ -30,8 +30,19 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @BeforeUpdate()
   @BeforeInsert()
+  generatePassword() {
+    this.password = createHmac('sha256', process.env.PASSWORD_DEFAULT).digest('hex');
+  }
+
+  @BeforeInsert()
+  generateUsername() {
+    if (this.email) {
+      this.username = this.email.split('@')[0];
+    }
+  }
+
+  @BeforeUpdate()
   hashPassword() {
     if (this.password) {
       this.password = createHmac('sha256', this.password).digest('hex');
