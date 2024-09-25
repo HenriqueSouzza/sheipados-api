@@ -12,7 +12,7 @@ async function bootstrap() {
       'https://sheipados-dev.com',
       'https://sheipados-nutrition-system.vercel.app',
     ],
-    methods: ["GET", "POST", "PUT"]
+    methods: ["GET", "POST", "PUT", "DELETE"]
   })
 
   const configService: ConfigService = app.get<ConfigService>(ConfigService);
