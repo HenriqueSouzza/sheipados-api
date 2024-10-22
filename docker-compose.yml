@@ -1,10 +1,11 @@
-version: '3.8'
+name: sheipados-nutrition-api
 
 services:
   db:
     container_name: sheipados-db
     image: mysql:5.7
     restart: always
+    platform: linux/amd64
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sheipados_db
