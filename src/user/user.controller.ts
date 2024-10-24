@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nes
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UserDto } from './dto/user-dto';
+import { UserDto } from './dto/user.dto';
 import { AuthGuard } from '@/auth/auth.guard';
 
 @UseGuards(AuthGuard)
