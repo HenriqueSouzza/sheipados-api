@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'products' })
 export class Product {
@@ -6,6 +6,7 @@ export class Product {
   id: number;
 
   @Column({ unique: true })
+  @PrimaryColumn()
   code_ean: string;
 
   @Column()
@@ -31,6 +32,18 @@ export class Product {
   
   @Column()
   isActive: boolean;
+
+  @Column()
+  value_last_pushase: string;
+
+  @Column()
+  cost_price: string;
+
+  @Column()
+  profit_margin: string;
+
+  @Column()
+  current_stock: number;
 
   @CreateDateColumn()
   createAt: Date;

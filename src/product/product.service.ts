@@ -19,20 +19,42 @@ export class ProductService {
         category: true,
         brand: true,
         expired_date: true,
-        code_cest: true,
         code_ncm: true,
+        code_cest: true,
         code_cfop: true,
+        isActive: true,
+        value_last_pushase: true,
+        cost_price: true,
+        profit_margin: true,
+        current_stock: true,
       }
     });
   }
 
   async findBy({ ...where }: ProductDto): Promise<Product> {
-    return this.productRepository.findOne({ where });
+    return this.productRepository.findOne({ 
+      where, 
+      select: {
+        code_ean: true,
+        product_name: true,
+        category: true,
+        brand: true,
+        expired_date: true,
+        code_ncm: true,
+        code_cest: true,
+        code_cfop: true,
+        isActive: true,
+        value_last_pushase: true,
+        cost_price: true,
+        profit_margin: true,
+        current_stock: true,
+      } 
+    });
   }
 
   async create(body: CreateProductDto): Promise<ProductDto> {
-    const user = this.productRepository.create({ ...body });
-    return await this.productRepository.save(user);
+    const createProduct = this.productRepository.create(body);
+    return await this.productRepository.save(createProduct);
   }
 
   async update(code_ean: string, body: Partial<Product>): Promise<ProductDto> {

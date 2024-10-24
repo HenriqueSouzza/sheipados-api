@@ -27,4 +27,16 @@ export class CreateProductDto {
 
   @IsNotEmpty()
   isActive: boolean
+
+  @IsNotEmpty()
+  value_last_pushase: string;
+
+  @IsNotEmpty()
+  cost_price: string;
+
+  @IsNotEmpty()
+  profit_margin: string;
+
+  @IsNotEmpty()
+  current_stock: number;
 }

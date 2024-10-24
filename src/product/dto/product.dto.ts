@@ -8,4 +8,8 @@ export class ProductDto {
   code_cest?: string
   code_cfop?: string
   isActive?: boolean
+  value_last_pushase?: string;
+  cost_price?: string;
+  profit_margin?: string;
+  current_stock?: number;
 }
